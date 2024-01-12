@@ -1,0 +1,97 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'AcctAndPartner', 
+    typeNamePlural: 'AcctAndPartners', 
+    title: {
+      type: #STANDARD, 
+      label: 'Acct and partner', 
+      value: 'Dept'
+    }
+  }
+}
+annotate view ZC_AcctAndPartner with
+{
+  @UI.identification: [ {
+    position: 1 , 
+    label: 'Dept'
+  } ]
+  @UI.lineItem: [ {
+    position: 1 , 
+    label: 'Dept'
+  }, 
+  {
+    type: #FOR_ACTION, 
+    dataAction: 'CopyAcctAndPartner', 
+    label: 'Copy Selected Entry', 
+    invocationGrouping: #CHANGE_SET
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_AcctAndPartner', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Acct and partner', 
+    position: 1 
+  } ]
+  Dept;
+  
+  @UI.identification: [ {
+    position: 2 , 
+    label: 'AccNo'
+  } ]
+  @UI.lineItem: [ {
+    position: 2 , 
+    label: 'AccNo'
+  } ]
+  AccNo;
+  
+  @UI.identification: [ {
+    position: 3 , 
+    label: 'StoreId'
+  } ]
+  @UI.lineItem: [ {
+    position: 3 , 
+    label: 'StoreId'
+  } ]
+  StoreId;
+  
+  @UI.identification: [ {
+    position: 4 , 
+    label: 'SoldTo'
+  } ]
+  @UI.lineItem: [ {
+    position: 4 , 
+    label: 'SoldTo'
+  } ]
+  SoldTo;
+  
+  @UI.identification: [ {
+    position: 5 , 
+    label: 'ShipTo'
+  } ]
+  @UI.lineItem: [ {
+    position: 5 , 
+    label: 'ShipTo'
+  } ]
+  ShipTo;
+  
+  @UI.identification: [ {
+    position: 6 , 
+    label: 'DeptName'
+  } ]
+  @UI.lineItem: [ {
+    position: 6 , 
+    label: 'DeptName'
+  } ]
+  DeptName;
+  
+  @UI.identification: [ {
+    position: 7 , 
+    label: 'AcctName'
+  } ]
+  @UI.lineItem: [ {
+    position: 7 , 
+    label: 'AcctName'
+  } ]
+  AcctName;
+}

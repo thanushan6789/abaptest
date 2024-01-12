@@ -1,0 +1,5 @@
+@MappingRole: true
+define role ZC_AcctAndPartner {
+  grant select on ZC_AcctAndPartner
+  where INHERITING CONDITIONS FROM ENTITY ZI_AcctAndPartner;
+}

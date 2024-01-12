@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service definition for ZC_SK_ACCT_PART'
+define service ZUI_SK_ACCT_PART_O4 {
+  expose ZC_SK_ACCT_PART;
+}

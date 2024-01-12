@@ -1,0 +1,50 @@
+managed implementation in class ZBP_R_SK_ACCT_PART unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZR_SK_ACCT_PART
+persistent table zsk_acct_part
+draft table ZSK_ACCT_PART_D1
+etag master LocalLastChanged
+lock master total etag LastChanged
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Dept,
+   AccNo,
+   StoreID;
+
+  field ( readonly )
+   LastChanged,
+   LocalLastChanged;
+
+  field ( readonly : update )
+   Dept,
+   AccNo,
+   StoreID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZSK_ACCT_PART
+  {
+    Dept = dept;
+    AccNo = acc_no;
+    StoreID = store_id;
+    SoldTo = sold_to;
+    ShipTo = ship_to;
+    DeptName = dept_name;
+    AcctName = acct_name;
+    LocalLastChanged = local_last_changed;
+    LastChanged = last_changed;
+  }
+}

@@ -1,0 +1,78 @@
+managed with additional save implementation in class ZBP_I_ACCTANDPARTNER_S unique;
+strict;
+with draft;
+
+define behavior for ZI_AcctAndPartner_S alias AcctAndPartnerAll
+draft table ZSK_ACCT_PA_D_S
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+
+{
+  field ( readonly )
+   SingletonID;
+
+  field ( notrigger )
+   SingletonID,
+   HideTransport,
+   LastChangedAtMax;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _AcctAndPartner { create ( features : instance ); with draft; }
+}
+
+define behavior for ZI_AcctAndPartner alias AcctAndPartner
+persistent table ZSK_ACCT_PART
+draft table ZSK_ACCT_PART_D
+lock dependent by _AcctAndPartnerAll
+authorization dependent by _AcctAndPartnerAll
+
+{
+  field ( mandatory : create )
+   Dept,
+   AccNo,
+   StoreId;
+
+  field ( readonly )
+   SingletonID;
+
+  field ( readonly : update )
+   Dept,
+   AccNo,
+   StoreId;
+
+  field ( notrigger )
+   SingletonID;
+
+
+  update( features : global );
+  delete( features : global );
+
+  factory action ( features : instance ) CopyAcctAndPartner parameter ZD_CopyAcctAndPartnerP [1];
+
+  mapping for ZSK_ACCT_PART
+  {
+    Dept = DEPT;
+    AccNo = ACC_NO;
+    StoreId = STORE_ID;
+    SoldTo = SOLD_TO;
+    ShipTo = SHIP_TO;
+    DeptName = DEPT_NAME;
+    AcctName = ACCT_NAME;
+  }
+
+  association _AcctAndPartnerAll { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

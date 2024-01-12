@@ -1,0 +1,95 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'ZC_SK_ACCT_PART', 
+    typeNamePlural: 'ZC_SK_ACCT_PARTs'
+  }
+}
+annotate view ZC_SK_ACCT_PART with
+{
+  @UI.facet: [ {
+    id: 'idIdentification', 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'ZC_SK_ACCT_PART', 
+    position: 10 
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    importance: #MEDIUM, 
+    label: 'Dept'
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'Dept'
+  } ]
+  Dept;
+  
+  @UI.lineItem: [ {
+    position: 20 , 
+    importance: #MEDIUM, 
+    label: 'AccNo'
+  } ]
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'AccNo'
+  } ]
+  AccNo;
+  
+  @UI.lineItem: [ {
+    position: 30 , 
+    importance: #MEDIUM, 
+    label: 'StoreID'
+  } ]
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'StoreID'
+  } ]
+  StoreID;
+  
+  @UI.lineItem: [ {
+    position: 40 , 
+    importance: #MEDIUM, 
+    label: 'SoldTo'
+  } ]
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'SoldTo'
+  } ]
+  SoldTo;
+  
+  @UI.lineItem: [ {
+    position: 50 , 
+    importance: #MEDIUM, 
+    label: 'ShipTo'
+  } ]
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'ShipTo'
+  } ]
+  ShipTo;
+  
+  @UI.lineItem: [ {
+    position: 60 , 
+    importance: #MEDIUM, 
+    label: 'DeptName'
+  } ]
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'DeptName'
+  } ]
+  DeptName;
+  
+  @UI.lineItem: [ {
+    position: 70 , 
+    importance: #MEDIUM, 
+    label: 'AcctName'
+  } ]
+  @UI.identification: [ {
+    position: 70 , 
+    label: 'AcctName'
+  } ]
+  AcctName;
+  
+  @UI.hidden: true
+  LocalLastChanged;
+}

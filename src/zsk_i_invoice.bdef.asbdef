@@ -1,0 +1,29 @@
+managed implementation in class zcl_i_invoice unique;
+//projection;
+strict ( 2 );
+with draft;
+
+define behavior for ZSK_I_INVOICE alias Invoice
+persistent table ZSK_INVOICE
+draft table zsk_invoice_d
+lock master
+total etag LocalLastChangedAt
+authorization master ( instance )
+etag master LastChangedAt
+{
+  create;
+  update;
+  delete;
+ // administrative fields: read only
+  field ( readonly ) LastChangedAt, LocalLastChangedBy, LocalLastChangedAt , LocalCreatedBy ,
+                      LocalCreatedAt;
+
+  field (readonly:update) Invoice;
+
+  draft action Edit ;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+
+  draft determine action Prepare ;
+}

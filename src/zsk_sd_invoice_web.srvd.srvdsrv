@@ -1,0 +1,4 @@
+@EndUserText.label: 'web service definition invoice'
+define service Zsk_sd_invoice_web {
+  expose Zsk_c_INVOICE;
+}

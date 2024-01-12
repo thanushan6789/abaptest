@@ -1,0 +1,5 @@
+@ObjectModel.leadingEntity.name: 'ZC_AcctAndPartner_S'
+define service ZUI_ACCTANDPARTNER {
+  expose ZC_ACCTANDPARTNER_S as AcctAndPartnerAll;
+  expose ZC_ACCTANDPARTNER as AcctAndPartner;
+}
